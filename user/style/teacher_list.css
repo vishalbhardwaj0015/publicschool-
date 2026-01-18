@@ -1,0 +1,65 @@
+.container-table {
+    width: 90%;
+    max-width: 1100px;
+    margin: 140px auto 50px auto;
+    background: #fff;
+    padding: 20px;
+}
+
+.msg-success {
+    text-align: center;
+    color: green;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.container-table h3 {
+    font-size: x-large;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.Stable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.Shead th {
+    padding: 12px;
+    background: #3a67e1;
+    color: white;
+}
+
+.Stable td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.Stable tr:hover {
+    background: #f2f2f2;
+}
+
+.btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+.edit {
+    background: #0066ff;
+}
+
+.edit:hover {
+    background: #004ecc;
+}
+
+.delete {
+    background: #e60000;
+}
+
+.delete:hover {
+    background: #b30000;
+}

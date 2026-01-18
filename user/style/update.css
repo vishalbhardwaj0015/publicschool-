@@ -1,0 +1,59 @@
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 115px 0 60px 0;
+}
+
+.container-form {
+    margin-bottom: 115px;
+    width: 90%;
+    max-width: 600px;
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-div {
+    margin-bottom: 15px;
+}
+
+.form-div label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-control, select, textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+textarea {
+    height: 100px;
+}
+
+.dob-inputs {
+    display: flex;
+    gap: 10px;
+}
+
+.dob-select {
+    flex: 1;
+}
+
+.checkbox-group, .form-div input[type="radio"] {
+    margin-top: 5px;
+}
+
+.btn {
+    margin-top: 10px;
+}

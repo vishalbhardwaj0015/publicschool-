@@ -1,0 +1,154 @@
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #e0ecf9;
+    padding-top: 115px;
+}
+
+
+.register-wrapper {
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+    margin-bottom: 115px;
+}
+
+.register-card {
+    background: #e9f4ff;
+    padding: 25px 30px;
+    border-radius: 8px;
+}
+
+
+.reg-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+.checkbox-area {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 12px 40px;   
+    margin-top: 10px;
+}
+
+.checkbox-area label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+
+.checkbox-area input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: block;
+}
+
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #c4d4e3;
+    border-radius: 5px;
+    background: #fff;
+}
+
+
+.dob-flex {
+    display: flex;
+    gap: 10px;
+}
+.dob-flex select {
+    flex: 1;
+}
+
+
+.inline-options {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-top: 8px;
+}
+
+.inline-options label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: normal;
+}
+
+
+.hobby-options {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-top: 8px;
+}
+
+.hobby-options label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+
+textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+
+.submit-btn {
+    width: 100%;
+    background: #165ac3;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    margin-top: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background: #0f47a1;
+}
+
+
+.error-box, .success-box {
+    padding: 10px;
+    margin-bottom: 15px;
+}
+.error-box {
+    background: #ffd4d4;
+    border-left: 4px solid red;
+}
+.success-box {
+    background: #d4ffdd;
+    border-left: 4px solid green;
+}
