@@ -1,0 +1,65 @@
+/* ===== COMPACT SITE FOOTER ===== */
+.site-footer {
+    position: relative;
+    width: 100%;
+    margin-top: 40px;
+    background: linear-gradient(135deg, #14213d 0%, #1f3a68 100%);
+    color: #cbd5e1;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 22px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.footer-brand { line-height: 1.2; }
+.footer-brand h6 {
+    margin: 0;
+    font-weight: 800;
+    font-size: 16px;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+.footer-brand p {
+    margin: 3px 0 0;
+    font-size: 12px;
+    color: #9fb0c9;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    align-items: center;
+}
+.footer-links a {
+    color: #b7c6e3;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+.footer-links a:hover {
+    color: #fff;
+}
+
+.copyright {
+    text-align: center;
+    padding: 12px 20px;
+    font-size: 12.5px;
+    color: #7d8ea8;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+@media (max-width: 576px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
