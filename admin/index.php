@@ -2,117 +2,60 @@
 session_start();
 include('../config/config.php');
 
-
 if(!isset($_SESSION['admin_id'])){
     header("Location: login.php");
     exit;
 }
 
-
-
 $admin = $_SESSION['admin_name'] ?? "Admin";
 
+$totalStudents = mysqli_fetch_assoc(mysqli_query($con, "SELECT COUNT(*) AS total FROM userform WHERE role_id = 1"))['total'];
+$totalTeachers = mysqli_fetch_assoc(mysqli_query($con, "SELECT COUNT(*) AS total FROM userform WHERE role_id = 2"))['total'];
+$totalClasses  = mysqli_fetch_assoc(mysqli_query($con, "SELECT COUNT(*) AS total FROM classes"))['total'];
+$totalAdmissions = mysqli_fetch_assoc(mysqli_query($con, "SELECT COUNT(*) AS total FROM admissions"))['total'];
 
-$totalStudents = mysqli_fetch_assoc(
-    mysqli_query($con, "SELECT COUNT(*) AS total FROM userform WHERE role_id = 1")
-)['total'];
+$feesRow = mysqli_fetch_assoc(mysqli_query($con, "SELECT IFNULL(SUM(paid_fee),0) AS paid, IFNULL(SUM(pending_fee),0) AS pending FROM fees"));
 
-$totalTeachers = mysqli_fetch_assoc(
-    mysqli_query($con, "SELECT COUNT(*) AS total FROM userform WHERE role_id = 2")
-)['total'];
-
-$totalClasses = mysqli_fetch_assoc(
-    mysqli_query($con, "SELECT COUNT(*) AS total FROM classes")
-)['total'];
-
-$totalAdmissions = mysqli_fetch_assoc(
-    mysqli_query($con, "SELECT COUNT(*) AS total FROM admissions")
-)['total'];
-
-
-$totalFees = mysqli_fetch_assoc(
-    mysqli_query($con, "SELECT SUM(paid_fee)  total FROM fees")
-)['total'] ?? 0;
-
-// Pending Fees
-$totalPending = mysqli_fetch_assoc(
-    mysqli_query($con, "SELECT SUM(pending_fee)  total FROM fees")
-)['total'] ?? 0;
-
+include('header.php');
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="style/index.css?v=<?php echo time(); ?>">
-</head>
-
-<body>         
-
-<!-- Sidebar -->
-<div class="sidebar">
-    <h2 class="logo">ADMIN PANEL</h2>
-
-    <a href="index.php" class="active">Dashboard</a>
-    <a href="students_list1.php">Students</a>
-    <a href="teachers_list1.php">Teachers</a>
-    <a href="class_list.php">Classes</a>
-    <a href="admissions.php">Admissions</a>
-    <a href="attendance_mark.php">Attendance</a>
-    <a href="fee_collection.php">Fees</a>
-    <a href="activity_list.php">Activities</a>
-    <a href="admin_profile.php">Admin Profile</a>
-    <a href="admin_create.php">Create Admin</a>
-
-    <a href="logout.php" class="logout-btn">Logout</a>
+<div class="content-header">
+    <h2>Dashboard</h2>
+    <a href="students_list1.php" class="btn-admin">+ Manage Students</a>
 </div>
 
-
-<div class="main-content">
-
-    <?php include("header.php"); ?>   
-
-                <!-- dashboard -->
-    <div class="dashboard-grid">
-
-        <div class="card">
-            <h3>
-                <?php echo $totalStudents; ?>
-            </h3>
-            <p>Total Students</p>
-        </div>
-        <div class="card">
-            <h3>
-                <?php echo $totalTeachers; ?>
-            </h3>
-            <p>Total Teachers</p>
-        </div>
-        <div class="card">
-            <h3>
-                <?php echo $totalClasses; ?>
-            </h3>
-            <p>Total Classes</p>
-        </div>
-        <div class="card">
-            <h3>
-                <?php echo $totalAdmissions; ?>
-            </h3>
-            <p>Admissions</p>
-        </div>
-        <div class="card">
-            <h3>
-                ₹<?php echo number_format($totalFees); ?>
-            </h3>
-            <p>Fees Collected</p>
-        </div>
-        <div class="card">
-            <h3>
-                ₹<?php echo number_format($totalPending); ?>
-            </h3>
-            <p>Pending Fees</p></div>
-        </div>
-
+<div class="dashboard-grid">
+    <div class="stat-card">
+        <div class="stat-ico" style="background:#e5edff;color:#2f6bff;"><i class="fa-solid fa-user-graduate"></i></div>
+        <h3><?= number_format($totalStudents) ?></h3>
+        <p>Total Students</p>
+    </div>
+    <div class="stat-card">
+        <div class="stat-ico" style="background:#e8f7ec;color:#1a7a3d;"><i class="fa-solid fa-chalkboard-user"></i></div>
+        <h3><?= number_format($totalTeachers) ?></h3>
+        <p>Total Teachers</p>
+    </div>
+    <div class="stat-card">
+        <div class="stat-ico" style="background:#fff3d6;color:#9a6700;"><i class="fa-solid fa-building-columns"></i></div>
+        <h3><?= number_format($totalClasses) ?></h3>
+        <p>Total Classes</p>
+    </div>
+    <div class="stat-card">
+        <div class="stat-ico" style="background:#fde7f0;color:#c2185b;"><i class="fa-solid fa-file-circle-check"></i></div>
+        <h3><?= number_format($totalAdmissions) ?></h3>
+        <p>Admissions</p>
+    </div>
+    <div class="stat-card">
+        <div class="stat-ico" style="background:#e5edff;color:#2f6bff;"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+        <h3>₹<?= number_format($feesRow['paid']) ?></h3>
+        <p>Fees Collected</p>
+    </div>
+    <div class="stat-card">
+        <div class="stat-ico" style="background:#fdecec;color:#e53935;"><i class="fa-solid fa-clock"></i></div>
+        <h3>₹<?= number_format($feesRow['pending']) ?></h3>
+        <p>Pending Fees</p>
+    </div>
 </div>
 
+</div>
 </body>
 </html>

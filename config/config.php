@@ -1,6 +1,4 @@
-
-
 <?php
-// $con = mysqli_connect('localhost','root','','template1') or die ('unble to connect');
-// print_r($con);
+$con = mysqli_connect('localhost', 'root', '', 'publicschool') or die('Unable to connect to database');
+mysqli_set_charset($con, 'utf8');
 ?>

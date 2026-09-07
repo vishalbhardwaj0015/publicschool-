@@ -1,126 +1,128 @@
-
-
-
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Segoe UI", Arial, sans-serif;
-}
-
-
-body {
-    background: #e3efff;
-    margin-bottom:50px ;
-}
-
-
-.login-wrapper {
+﻿/* ===== PROFESSIONAL LOGIN ===== */
+.login-page {
+    min-height: calc(100vh - 90px);
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 140px 20px;
+    justify-content: center;
+    padding: 50px 20px;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(122,84,255,0.12), transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(47,107,255,0.14), transparent 45%),
+        #eef2fa;
 }
-
 
 .login-card {
-    width: 350px;
-    background: #ffffff;
-    padding: 35px 30px;
-    border-radius: 12px;
-    box-shadow: 0 5px 30px rgba(0,0,0,0.12);
+    width: 100%;
+    max-width: 420px;
+    background: #fff;
+    border-radius: 20px;
+    padding: 40px 36px;
+    box-shadow: 0 18px 50px rgba(20,33,61,0.16);
 }
 
-
-.login-card h2 {
+.login-head {
     text-align: center;
-    font-size: 26px;
-    margin-bottom: 20px;
-    color: #1a2a44;
-    font-weight: bold;
+    margin-bottom: 26px;
 }
-
+.login-head .brand-badge {
+    width: 74px;
+    height: 74px;
+    margin: 0 auto 14px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #14213d, #2f6bff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(47,107,255,0.35);
+}
+.login-head h2 {
+    font-weight: 800;
+    color: #14213d;
+    margin: 0 0 4px;
+}
+.login-head p {
+    color: #7c8596;
+    font-size: 14px;
+    margin: 0;
+}
 
 .form-group {
     margin-bottom: 18px;
 }
-
 .form-group label {
     display: block;
-    margin-bottom: 6px;
     font-weight: 600;
-    color: #0d2340;
+    color: #14213d;
+    margin-bottom: 7px;
+    font-size: 14px;
 }
-
-.form-group input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #cdd7e5;
-    border-radius: 8px;
-    background: #f5f8ff;
+.input-wrap {
+    position: relative;
+}
+.input-wrap i {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9aa5b8;
     font-size: 15px;
-    transition: 0.3s;
 }
-
-.form-group input:focus {
-    border-color: #3f76ff;
+.input-wrap input {
+    width: 100%;
+    padding: 13px 14px 13px 42px;
+    border: 1px solid #d8dfec;
+    border-radius: 10px;
+    background: #f7f9fd;
+    font-size: 15px;
+    transition: 0.25s;
+}
+.input-wrap input:focus {
+    border-color: #2f6bff;
     background: #fff;
     outline: none;
-    box-shadow: 0 0 6px rgba(63,118,255,0.35);
+    box-shadow: 0 0 0 4px rgba(47,107,255,0.12);
 }
-
-
-
-.buttons-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    margin-top: 15px;
-}
-
 
 .btn-login {
-    flex: 1;
-    padding: 12px;
-    background: #3f76ff;
+    width: 100%;
+    padding: 13px;
+    background: linear-gradient(135deg, #2f6bff, #1f4fd8);
     color: #fff;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
-    transition: 0.3s ease;
+    transition: 0.25s;
+    box-shadow: 0 6px 16px rgba(47,107,255,0.3);
 }
-
 .btn-login:hover {
-    background: #2e5edb;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(47,107,255,0.4);
 }
 
-
-.btn-forget {
-    flex: 1;
-    padding: 12px;
-    background: #f32222a1;
-    color: #333;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s ease;
+.login-foot {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #7c8596;
 }
-
-.btn-forget:hover {
-    background: #f10303;
+.login-foot a {
+    color: #2f6bff;
+    font-weight: 700;
+    text-decoration: none;
 }
-
+.login-foot a:hover { text-decoration: underline; }
 
 .error-box {
-    background: #ffe2e2;
-    color: #b30000;
-    border-left: 4px solid #e60000;
-    padding: 12px;
-    margin-bottom: 15px;
-    border-radius: 6px;
+    background: #fdecec;
+    color: #b3261e;
+    border-left: 4px solid #e53935;
+    padding: 12px 14px;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    font-size: 14px;
+    line-height: 1.6;
 }

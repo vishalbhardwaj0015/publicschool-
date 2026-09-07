@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('config/config.php');
+include('../config/config.php');
 
 $error = "";
 
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['btnlogin'])) {
                 $_SESSION['user_id'] = $row['id'];
                 $_SESSION['user_name'] = $row['name'];
 
-                header("Location: user/home.php");
+                header("Location: home.php");
                 exit;
 
             } else {
@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['btnlogin'])) {
 
     <style>
         body {
-            background: url('images/bg.jpg') no-repeat center center/cover;
+            background: linear-gradient(135deg,#0f4c81,#1a73e8) no-repeat center center/cover;
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -139,7 +139,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['btnlogin'])) {
         <button type="submit" name="btnlogin" class="btn">Login</button>
     </form>
 
-    <a href="user/index.php">← Back</a>
+    <a href="../index.php">&#8592; Back</a>
 </div>
 
 </body>

@@ -2,20 +2,19 @@
 
 <footer class="site-footer">
     <div class="footer-container">
-
         <div class="footer-brand">
             <h6>HIM PUBLIC SCHOOL</h6>
-            <p>Bringing Quality Education</p>
+            <p>Quality education from Nursery to +2</p>
         </div>
 
         <div class="footer-links">
-            <a href="../home.php">Home</a>
-            <a href="../contact.php">Contact</a>
-            <a href="../logout.php">Logout</a>
+            <a href="home.php">Home</a>
+            <a href="student_list.php">Students</a>
+            <a href="teacher_list.php">Teachers</a>
+            <a href="register.php">Admission</a>
+            <a href="login.php">Login</a>
         </div>
-
     </div>
-
     <div class="copyright">
         © <?php echo date("Y"); ?> HIM PUBLIC SCHOOL — All rights reserved.
     </div>

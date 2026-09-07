@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('E:\XAMPP\htdocs\PUBLICSCHOOL\config\config.php');
+include('../config/config.php');
 
 $errors = [];
 
@@ -21,11 +21,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['btn-login'])) {
 
             if (password_verify($password, $user['password'])) {
 
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['username'] = $user['name'];
-                $_SESSION['role'] = $user['role'];
+                $_SESSION['user_id']   = $user['id'];
+                $_SESSION['username']  = $user['name'];
+                $_SESSION['email']     = $user['email'];
+                $_SESSION['role']      = $user['role'];
+                $_SESSION['role_id']   = $user['role_id'];
 
-                header("Location: home.php");
+                // Route by role: teachers to their own dashboard, students to student portal
+                if (intval($user['role_id']) === 2) {
+                    header("Location: teacher_home.php");
+                } else {
+                    header("Location: home.php");
+                }
                 exit();
 
             } else {
@@ -39,44 +46,55 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['btn-login'])) {
 }
 ?>
 
-<?php include 'asset\header.php'; ?>
+<?php include 'asset/header.php'; ?>
 
 <link rel="stylesheet" href="style/login.css?v=<?php echo time(); ?>">
 
-<div class="login-wrapper">
+<div class="login-page">
     <div class="login-card">
+
+        <div class="login-head">
+            <div class="brand-badge"><i class="fa-solid fa-school"></i></div>
+            <h2>Teacher / Student Login</h2>
+            <p>HIM PUBLIC SCHOOL — Parent &amp; Student Portal</p>
+        </div>
+
+        <?php if (!empty($errors)): ?>
+        <div class="error-box">
+            <?php foreach ($errors as $e): ?>
+                <i class="fa-solid fa-circle-exclamation"></i> <?= htmlspecialchars($e); ?><br>
+            <?php endforeach; ?>
+        </div>
+        <?php endif; ?>
 
         <form action="" method="post">
 
-            <h2>Login</h2>
-
-            <?php if (!empty($errors)): ?>
-            <div class="error-box">
-                <?php foreach ($errors as $e): ?>
-                    • <?= htmlspecialchars($e); ?><br>
-                <?php endforeach; ?>
-            </div>
-            <?php endif; ?>
-
             <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="email" placeholder="Enter your Email">
+                <label>Email Address</label>
+                <div class="input-wrap">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" name="email" placeholder="Enter your Email" value="<?= htmlspecialchars($_POST['email'] ?? '') ?>">
+                </div>
             </div>
 
             <div class="form-group">
                 <label>Password</label>
-                <input type="password" name="password" placeholder="Enter your Password">
+                <div class="input-wrap">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" name="password" placeholder="Enter your Password">
+                </div>
             </div>
 
-            <div class="buttons-row">
-              <button type="submit" name="btn-login" class="btn-login">Login</button>
-              <button type="button" name="btn-forget" class="btn-forget">Forget</button>
-            </div>
-            
+            <button type="submit" name="btn-login" class="btn-login">Login</button>
 
         </form>
+
+        <div class="login-foot">
+            <span>New student?</span>
+            <a href="register.php"> &nbsp;Apply for Admission</a>
+        </div>
 
     </div>
 </div>
 
-<?php include 'asset\footer.php'; ?>
+<?php include 'asset/footer.php'; ?>
