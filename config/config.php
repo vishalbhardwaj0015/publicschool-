@@ -8,8 +8,11 @@ $db_name  = getenv('DATABASE_NAME') !== false && getenv('DATABASE_NAME') !== '' 
 $con = null;
 
 if ($db_host && $db_user) {
-    // Online / TiDB connection (production).
-    // TiDB Cloud Starter requires TLS, so enable ssl and trust the CA bundle.
+    // Online connection (production).
+    // The mysqli extension in the official php:apache image is compiled WITH
+    // mysqlnd => SSL support is available. MySQL-compatible hosts (TiDB Cloud,
+    // db4free.net, etc.) accept TLS. We enable SSL and skip strict cert
+    // verification so self-signed TLS works out of the box.
     mysqli_report(MYSQLI_REPORT_OFF);
     $con = mysqli_init();
     if ($con) {
@@ -23,8 +26,10 @@ if (!$con || mysqli_connect_errno()) {
     // Local development fallback (XAMPP/WAMP). Only used when NOT on Render.
     $is_render = getenv('RENDER') !== false;
     if ($is_render) {
+        $errno  = mysqli_connect_errno();
+        $errmsg = mysqli_connect_error();
         http_response_code(500);
-        exit('Database connection failed. Please check the DATABASE_* settings.');
+        exit('Database connection failed. Please check the DATABASE_* settings. [errno=' . $errno . '] ' . $errmsg);
     }
     mysqli_report(MYSQLI_REPORT_OFF);
     $con = @mysqli_connect('localhost', 'root', '', 'publicschool')
