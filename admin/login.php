@@ -2,13 +2,6 @@
 session_start();
 include('../config/config.php');
 
-/* --- FIRST TIME INSTALL MODE --- */
-$chk = mysqli_query($con, "SELECT id FROM admin LIMIT 1");
-if (mysqli_num_rows($chk) == 0) {
-    header("Location: admin_create.php");
-    exit;
-}
-
 $error = "";
 
 /* If already logged in */
